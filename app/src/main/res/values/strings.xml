@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ShoppingList</string>
+    <string name="button_main">Add Item</string>
+    <string name="button_one">Cheese</string>
+    <string name="button_two">Rice</string>
+    <string name="button_three">Apples</string>
+    <string name="button_four">Bread</string>
+    <string name="button_five">Milk</string>
+    <string name="button_six">Butter</string>
+    <string name="button_seven">Sugar</string>
+    <string name="button_eight">Potatoes</string>
+    <string name="button_nine">Peanut Butter</string>
+    <string name="button_ten">Jelly</string>
+</resources>
