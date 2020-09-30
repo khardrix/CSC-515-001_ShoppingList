@@ -133,6 +133,47 @@ public class MainActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         Log.d(LOG_TAG, "onResume");
+
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(SecondActivity.EXTRA_REPLY);
+        tVID = SecondActivity.getTextViewID();
+        displayingTV = findViewById(R.id.textView_one);
+
+        if(tVID == 1) {
+            displayingTV = findViewById(R.id.textView_one);
+        }
+        else if(tVID == 2) {
+            displayingTV = findViewById(R.id.textView_two);
+        }
+        else if(tVID == 3) {
+            displayingTV = findViewById(R.id.textView_three);
+        }
+        else if(tVID == 4) {
+            displayingTV = findViewById(R.id.textView_four);
+        }
+        else if(tVID == 5) {
+            displayingTV = findViewById(R.id.textView_five);
+        }
+        else if(tVID == 6) {
+            displayingTV = findViewById(R.id.textView_six);
+        }
+        else if(tVID == 7) {
+            displayingTV = findViewById(R.id.textView_seven);
+        }
+        else if(tVID == 8) {
+            displayingTV = findViewById(R.id.textView_eight);
+        }
+        else if(tVID == 9) {
+            displayingTV = findViewById(R.id.textView_nine);
+        }
+        else if(tVID == 10) {
+            displayingTV = findViewById(R.id.textView_ten);
+        }
+
+        displayingTV.setText(message);
+
+        displayingTV.setVisibility(View.VISIBLE);
+        displayingTV.setText(message);
     }
 
 
