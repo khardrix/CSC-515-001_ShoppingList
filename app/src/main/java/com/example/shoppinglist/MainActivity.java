@@ -1,6 +1,7 @@
 package com.example.shoppinglist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
     private TextView displayingTV;
 
+    private int currTextView = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "-------");
         Log.d(LOG_TAG, "onCreate");
 
-        Intent intent = getIntent();
+      /*  Intent intent = getIntent();
         String message = intent.getStringExtra(SecondActivity.EXTRA_REPLY);
         tVID = SecondActivity.getTextViewID();
         displayingTV = findViewById(R.id.textView_one);
@@ -63,15 +66,21 @@ public class MainActivity extends AppCompatActivity {
             displayingTV = findViewById(R.id.textView_ten);
         }
 
-        displayingTV.setText(message);
+        displayingTV.setText(message); */
 
         // Restore the state.
         if (savedInstanceState != null) {
-            boolean isVisible = savedInstanceState.getBoolean("reply_visible");
+          /*  boolean isVisible = savedInstanceState.getBoolean("reply_visible");
 
             if (isVisible) {
                 displayingTV.setVisibility(View.VISIBLE);
                 displayingTV.setText(savedInstanceState.getString("reply_text"));
+            }
+             */
+            ConstraintLayout layout = findViewById(R.id.constraintLayout);
+            for (int i=0; i<10; i++) {
+                TextView view = (TextView)layout.getChildAt(i);
+                view.setText(savedInstanceState.getString("text_"+i));
             }
         }
     }
@@ -91,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == TEXT_REQUEST) {
             if (resultCode == RESULT_OK) {
                 String reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
+                ConstraintLayout layout = findViewById(R.id.constraintLayout);
+                displayingTV = (TextView)layout.getChildAt(currTextView);
+                currTextView++;
                 displayingTV.setVisibility(View.VISIBLE);
                 displayingTV.setText(reply);
             }
@@ -101,9 +113,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (displayingTV.getVisibility() == View.VISIBLE) {
+       /* if (displayingTV.getVisibility() == View.VISIBLE) {
             outState.putBoolean("reply_visible", true);
             outState.putString("reply_text", displayingTV.getText().toString());
+        } */
+        ConstraintLayout layout = findViewById(R.id.constraintLayout);
+        for (int i=0; i<10; i++) {
+            TextView view = (TextView)layout.getChildAt(i);
+            outState.putString("text_"+i, view.getText().toString());
         }
     }
 
@@ -129,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
+   /* @Override
     public void onResume(){
         super.onResume();
         Log.d(LOG_TAG, "onResume");
@@ -174,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
         displayingTV.setVisibility(View.VISIBLE);
         displayingTV.setText(message);
-    }
+    } */
 
 
     @Override

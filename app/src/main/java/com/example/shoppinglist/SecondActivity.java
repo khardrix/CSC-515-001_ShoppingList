@@ -125,7 +125,7 @@ public class SecondActivity extends AppCompatActivity {
             message = getResources().getString(R.string.button_ten);
         }
 
-        Intent replyIntent = new Intent(this, SecondActivity.class);
+        Intent replyIntent = new Intent();
         replyIntent.putExtra(EXTRA_REPLY, message);
         setResult(RESULT_OK, replyIntent);
         Log.d(LOG_TAG, "End SecondActivity");
